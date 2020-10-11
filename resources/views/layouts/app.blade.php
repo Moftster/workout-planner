@@ -57,14 +57,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-link">
-                                My Routine
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ route('exercise.create') }}">
+                                    My Routine
+                                </a>
                             </li>
-                            <li class="nav-link">
-                                My Exercises
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ route('exercise.index') }}">
+                                    My Exercises
+                                </a>
                             </li>
-                            <li class="nav-link">
-                                Add Exercise
+                            <li class="nav-item" >
+                                <a class="nav-link" href="{{ route('exercise.create') }}">
+                                    Add Exercise
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -98,5 +104,6 @@
             </div>
         </main>
     </div>
+   <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

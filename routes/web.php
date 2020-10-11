@@ -23,7 +23,9 @@ Route::get('/', function() {
     }
   });
 
-Route::get('/routine', 'HomeController@index');
+Route::get('routine', 'HomeController@index')->middleware('auth');
+
+Route::resource('exercise', 'ExerciseController')->middleware('auth');
 
 Auth::routes();
 
