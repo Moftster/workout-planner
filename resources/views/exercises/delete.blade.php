@@ -2,6 +2,6 @@
 
 @section('content')
 
-<h1>Delte exercises</h1>
+<h1>Delete exercises</h1>
 
 @endsection

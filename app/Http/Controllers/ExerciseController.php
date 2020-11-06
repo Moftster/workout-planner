@@ -78,7 +78,8 @@ class ExerciseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $exercise = Exercise::find($id);
+        return view('exercises.update', compact('exercise'));
     }
 
     /**
@@ -90,7 +91,18 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'exerciseName' => 'required|unique:exercises',
+            'exerciseCategory' => 'required'
+        ]);
+
+        $exercise = Exercise::find($id);
+        $exercise->exerciseName = $request->get('exerciseName');
+        $exercise->exerciseCategory = $request->get('exerciseCategory');
+        $exercise->save();
+
+        return redirect('/contacts')->with('success', 'Exercise updated!');
+
     }
 
     /**
