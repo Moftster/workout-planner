@@ -12,21 +12,19 @@
 </div><br />
 @endif
 
-<form method="post" action="{{ route('exercise.update', $exercise->exerciseName) }}">
+<form method="post" action="{{ route('exercise.update', $exercise->id) }}">
   @method('PATCH') 
   @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Exercise Name</label>
-    <input type="text" class="form-control" id="exerciseName" name="exerciseName" value={{ $exercise->name }}>
+    <input type="text" class="form-control" id="exerciseName" name="exerciseName" value="{{ $exercise->exerciseName }}">
   </div>
-  
-  {{-- Loop through exercise categries --}}
-  
+  {{print_r($selectedExercises)}}
   <div class="form-group">
     <label for="exerciseCategory">Bodypart</label>
-      @foreach ($exerciseCategories as $exerciseCategory)
+    @foreach ($exerciseCategories as $exerciseCategory)
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="{{$exerciseCategory->category}}" name="exerciseCategory[]" id="{{$exerciseCategory->category}}">
+        <input class="form-check-input" type="checkbox" value="{{$exerciseCategory->category}}" name="exerciseCategory[]" id="{{$exerciseCategory->category}}" @if (in_array($exerciseCategory->category, $selectedExercises)) checked @endif >
         <label class="form-check-label" for="{{$exerciseCategory->category}}">
           {{$exerciseCategory->category}}
         </label>
@@ -35,7 +33,7 @@
     </select>
     <small id="categoryHelp" class="form-text text-muted">Select the bodypart/s this exercise will target.</small>
   </div>
-  <button type="submit" class="btn btn-primary">Update exercises</button>
+  <button type="submit" class="btn btn-primary">Update exercise</button>
 
     {{-- Conditionally add another body part category --}}
 

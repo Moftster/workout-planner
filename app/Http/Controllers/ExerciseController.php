@@ -50,7 +50,7 @@ class ExerciseController extends Controller
             'exerciseCategory' => 'required'
             ]);
 
-            $exerciseCategoryToString = implode(", ", $request->exerciseCategory);
+            $exerciseCategoryToString = implode(",", $request->exerciseCategory);
             $exercise = new Exercise([
             'exerciseName' => $request->get('exerciseName'),
             'exerciseCategory' => $exerciseCategoryToString
@@ -79,7 +79,10 @@ class ExerciseController extends Controller
     public function edit($id)
     {
         $exercise = Exercise::find($id);
-        return view('exercises.update', compact('exercise'));
+        $exerciseCategories = Category::all();
+        $selectedExercises = explode(",", $exercise->exerciseCategory);
+
+        return view('exercises.update', compact('exercise', 'exerciseCategories', 'selectedExercises'));
     }
 
     /**
@@ -92,16 +95,20 @@ class ExerciseController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'exerciseName' => 'required|unique:exercises',
+            'exerciseName' => 'required',
             'exerciseCategory' => 'required'
         ]);
 
         $exercise = Exercise::find($id);
         $exercise->exerciseName = $request->get('exerciseName');
-        $exercise->exerciseCategory = $request->get('exerciseCategory');
+        $exercise->exerciseCategory = implode(", ", $request->exerciseCategory);
+        // $exerciseCategoryToString = implode(",", $request->exerciseCategory);
+        // dd(implode(",", $exercise->exerciseCategory));
+        // dd($request->get('exerciseCategory'));
+
         $exercise->save();
 
-        return redirect('/contacts')->with('success', 'Exercise updated!');
+        return redirect('/exercise')->with('success', 'Exercise updated!');
 
     }
 

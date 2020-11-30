@@ -32,7 +32,7 @@
                 <td></td>
                 <td></td>
                 <td><button type="button" class="btn btn-success">View my records</button></td>
-                <td><button href="{{ route('exercises.update', $exercise->id)}}" type="button" class="btn btn-warning">Edit</button></td>
+                <td><a href="{{route('exercises.edit', [$exercise->id])}}"><button type="button" class="btn btn-warning">Edit</button></a></td>
                 <td><button type="button" class="btn btn-danger">Delete</button></td>
             </tr>
       @endforeach
