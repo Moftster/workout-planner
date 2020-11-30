@@ -27,5 +27,8 @@ Route::get('routine', 'HomeController@index')->middleware('auth');
 
 Route::resource('exercise', 'ExerciseController')->middleware('auth');
 
+Route::get('/exercises/edit/{id}', 'ExerciseController@edit')->name('exercises.edit');
+
+
 Auth::routes();
 
