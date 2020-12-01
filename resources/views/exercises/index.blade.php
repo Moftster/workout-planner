@@ -33,7 +33,14 @@
                 <td></td>
                 <td><button type="button" class="btn btn-success">View my records</button></td>
                 <td><a href="{{route('exercises.edit', [$exercise->id])}}"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                <td>               
+                  <form action="{{ route('exercises.destroy', ['id' => $exercise->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </td>
+                {{-- <td><a href="{{ route('exercises.destroy', [$exercise->id])}}"><button type="button" class="btn btn-danger">Delete</button></a></td> --}}
             </tr>
       @endforeach
     </tbody>

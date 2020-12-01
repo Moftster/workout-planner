@@ -102,14 +102,9 @@ class ExerciseController extends Controller
         $exercise = Exercise::find($id);
         $exercise->exerciseName = $request->get('exerciseName');
         $exercise->exerciseCategory = implode(", ", $request->exerciseCategory);
-        // $exerciseCategoryToString = implode(",", $request->exerciseCategory);
-        // dd(implode(",", $exercise->exerciseCategory));
-        // dd($request->get('exerciseCategory'));
-
         $exercise->save();
 
         return redirect('/exercise')->with('success', 'Exercise updated!');
-
     }
 
     /**
@@ -120,6 +115,9 @@ class ExerciseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $exercise = Exercise::find($id);
+        $exercise->delete();
+
+        return redirect('/exercise')->with('success', 'Exercise deleted!');
     }
 }

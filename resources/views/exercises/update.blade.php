@@ -19,7 +19,6 @@
     <label for="exampleInputEmail1">Exercise Name</label>
     <input type="text" class="form-control" id="exerciseName" name="exerciseName" value="{{ $exercise->exerciseName }}">
   </div>
-  {{print_r($selectedExercises)}}
   <div class="form-group">
     <label for="exerciseCategory">Bodypart</label>
     @foreach ($exerciseCategories as $exerciseCategory)
