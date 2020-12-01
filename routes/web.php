@@ -23,7 +23,13 @@ Route::get('/', function() {
     }
   });
 
-Route::get('/routine', 'HomeController@index');
+Route::get('routine', 'HomeController@index')->middleware('auth');
+
+Route::resource('exercise', 'ExerciseController')->middleware('auth');
+
+Route::get('/exercises/edit/{id}', 'ExerciseController@edit')->name('exercises.edit');
+
+Route::delete('/exercises/delete/{id}', 'ExerciseController@destroy')->name('exercises.destroy');
 
 Auth::routes();
 
