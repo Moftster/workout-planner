@@ -58,13 +58,13 @@
                             @endif
                         @else
                             <li class="nav-item" >
-                                <a class="nav-link" href="{{ route('exercise.create') }}">
-                                    My Routine
+                                <a class="nav-link" href="/">
+                                    Routines
                                 </a>
                             </li>
                             <li class="nav-item" >
                                 <a class="nav-link" href="{{ route('exercise.index') }}">
-                                    My Exercises
+                                    Exercises
                                 </a>
                             </li>
                             <li class="nav-item" >

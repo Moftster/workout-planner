@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Exercise;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,5 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(ExerciseCategorySeeder::class);
+        $this->call(ExerciseSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
