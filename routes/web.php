@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function() {
     if (Auth::check()) {
-       return view('routine');
+       return view('routines.index');
     }
     else {
       return view('homepage');
@@ -26,10 +26,12 @@ Route::get('/', function() {
 Route::get('routine', 'HomeController@index')->middleware('auth');
 
 Route::resource('exercise', 'ExerciseController')->middleware('auth');
-
 Route::get('/exercises/edit/{id}', 'ExerciseController@edit')->name('exercises.edit');
-
 Route::delete('/exercises/delete/{id}', 'ExerciseController@destroy')->name('exercises.destroy');
+
+// Route::get('/routines/create', 'RoutineController@create');
+Route::resource('routine', 'RoutineController')->middleware('auth');
+
 
 Auth::routes();
 
