@@ -43,7 +43,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="exercisesDropdown">
                 @foreach ($exercises as $exercise)
-                 <a class="dropdown-item" onclick="exerciseAdded({{json_encode($exercise->exerciseName), json_encode($exercise->exerciseCategory)}})">{{$exercise->exerciseName}}</a>
+                 <a class="dropdown-item" onclick="exerciseAdded({{json_encode($exercise->exerciseName)}})">{{$exercise->exerciseName}}</a>
                 @endforeach
             </div>
           </div>

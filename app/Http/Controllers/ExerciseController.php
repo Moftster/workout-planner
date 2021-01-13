@@ -50,10 +50,9 @@ class ExerciseController extends Controller
             'exerciseCategory' => 'required'
             ]);
 
-            $exerciseCategoryToString = implode(",", $request->exerciseCategory);
             $exercise = new Exercise([
             'exerciseName' => $request->get('exerciseName'),
-            'exerciseCategory' => $exerciseCategoryToString
+            // 'exerciseCategory' => $exerciseCategoryToString
             ]);
             $exercise->save();
             return redirect('exercise/')->with('success', 'Exercise saved!');
@@ -101,7 +100,7 @@ class ExerciseController extends Controller
 
         $exercise = Exercise::find($id);
         $exercise->exerciseName = $request->get('exerciseName');
-        $exercise->exerciseCategory = implode(", ", $request->exerciseCategory);
+        // $exercise->exerciseCategory = implode(", ", $request->exerciseCategory);
         $exercise->save();
 
         return redirect('/exercise')->with('success', 'Exercise updated!');

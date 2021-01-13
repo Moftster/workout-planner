@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExerciseCategories extends Migration
+class CreateCategories extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateExerciseCategories extends Migration
      */
     public function up()
     {
-        Schema::create('exercise_categories', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('category');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateExerciseCategories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercise_categories');
+        Schema::dropIfExists('categories');
     }
 }

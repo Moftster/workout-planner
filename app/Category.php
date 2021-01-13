@@ -11,5 +11,5 @@ class Category extends Model
      *
      * @var string
      */
-    protected $table = 'exercise_categories';
+    protected $table = 'categories';
 }
