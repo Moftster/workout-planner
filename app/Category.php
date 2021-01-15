@@ -12,4 +12,8 @@ class Category extends Model
      * @var string
      */
     protected $table = 'categories';
+
+    public function exercises(){
+        return $this->belongsToMany(Exercise::class);
+    }
 }

@@ -12,4 +12,8 @@ class Exercise extends Model
     {
         return $this->belongsToMany(Routine::class)->withTimestamps();
     }
+
+    public function categories(){
+        return $this->belongsToMany(Category::class);
+    }
 }

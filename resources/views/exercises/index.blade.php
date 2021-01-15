@@ -27,7 +27,11 @@
         @foreach($exercises as $exercise) 
             <tr>
                 <th scope="row">{{$exercise->exerciseName}}</th>
-                <td>{{$exercise->exerciseCategory}}</td>
+                <td>
+                @foreach ($exercise->categories as $category)
+                  {{$category->category}}@if( !$loop->last), @endif
+                @endforeach
+                </td>
                 <td></td>
                 <td></td>
                 <td></td>
