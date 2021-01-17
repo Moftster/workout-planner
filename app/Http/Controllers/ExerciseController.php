@@ -51,10 +51,13 @@ class ExerciseController extends Controller
             ]);
 
             $exercise = new Exercise([
-            'exerciseName' => $request->get('exerciseName'),
-            // 'exerciseCategory' => $exerciseCategoryToString
+                'exerciseName' => $request->get('exerciseName'),
+                // 'exerciseCategory' => $exerciseCategoryToString
             ]);
             $exercise->save();
+
+            $exercise->categories()->sync($request->get('exerciseCategory'));
+
             return redirect('exercise/')->with('success', 'Exercise saved!');
     }
 
