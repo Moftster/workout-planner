@@ -28,13 +28,6 @@ class RoutineController extends Controller
     public function create()
     {
         $exercises = Exercise::all();
-
-        // $routine = \App\Routine::first();
-
-        // $routine->exercises()->sync([2,3]);
-
-        // return view('routines.create', compact('exercises', 'routine'));
-        
         return view('routines.create', compact('exercises'));
     }
 
@@ -46,16 +39,12 @@ class RoutineController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->get('routine-name'));
-        // dd('test1');
         $request->validate(['routineName' => 'required|unique:routines']);
 
         $routine = new Routine([
             'routineName' => $request->get('routineName')
         ]);
 
-        // dd($routine);
-            
         $routine->save();
         
         return redirect('exercise/')->with('success', 'Routine saved!');

@@ -21,17 +21,12 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Exercise</th>
-                <th scope="col">Bodypart</th>
-                <th scope="col">Previous weight</th>
-                <th scope="col">Previous Set</th>
-                <th scope="col">Notes</th>
+                <th scope="col">Targets</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row"></th>
-                <td></td>
-                <td></td>
                 <td></td>
               </tr>
             </tbody>
@@ -43,7 +38,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="exercisesDropdown">
                 @foreach ($exercises as $exercise)
-                 <a class="dropdown-item" onclick="exerciseAdded({{json_encode($exercise->exerciseName)}})">{{$exercise->exerciseName}}</a>
+                 <a class="dropdown-item" onclick="exerciseAdded('{{$exercise->exerciseName}}', '@foreach( $exercise->categories as $category){{$category->category}}@if( !$loop->last), @endif @endforeach')">{{$exercise->exerciseName}}</a>
                 @endforeach
             </div>
           </div>
