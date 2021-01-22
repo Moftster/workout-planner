@@ -12,7 +12,7 @@
         <div class="form-group">
           <label for="routine-description">Routine description</label>
           <small>(Optional)</small>
-          <textarea class="form-control" id="routine-description" rows="3"></textarea>
+          <textarea name="routine-description" class="form-control" id="routine-description" rows="3"></textarea>
         </div>
 
         <h3>Current Routine</h3>
@@ -21,7 +21,7 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Exercise</th>
-                <th scope="col">Targets</th>
+                <th scope="col">Areas targeted</th>
               </tr>
             </thead>
             <tbody>

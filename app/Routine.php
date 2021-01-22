@@ -9,7 +9,7 @@ class Routine extends Model
 
     protected $guarded = [];
 
-    protected $fillable = ['routineName', 'routineCategory'];
+    protected $fillable = ['routineName', 'routineDescription', 'routineCategory'];
 
     public function exercises(){
         return $this->belongsToMany(Exercise::class)->withTimestamps();

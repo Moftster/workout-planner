@@ -42,7 +42,8 @@ class RoutineController extends Controller
         $request->validate(['routineName' => 'required|unique:routines']);
 
         $routine = new Routine([
-            'routineName' => $request->get('routineName')
+            'routineName' => $request->get('routineName'),
+            'routineDescription' => $request->get('routine-description')
         ]);
 
         $routine->save();
