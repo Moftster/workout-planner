@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
     <h3>Create Routine</h3>
+    @if ($errors->any())
+      <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+              <p>{{ $error }}</p>
+            @endforeach
+      </div>
+      <br />
+    @endif
     <form method="post" action="{{ route('routine.store') }}">
         @csrf
         <div class="form-group">
