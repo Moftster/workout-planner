@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 use App\Exercise;
+use App\Routine;
 
 class RoutineSeeder extends Seeder
 {
@@ -17,9 +18,12 @@ class RoutineSeeder extends Seeder
     {
         factory(App\Routine::class, 10)->create();
 
-        foreach(Exercise::all() as $exercise) {
-            $routines = \App\Routine::inRandomOrder()->take(rand(1,3))->pluck('id');
-            $exercise->routines()->attach($routines);
+        $exercises = Exercise::all();
+
+        foreach(Routine::all() as $routine) {
+            $routine->exercises()->attach(
+                $exercises->random(rand(3,14))->pluck('id')
+            );
         }
     }
 }
