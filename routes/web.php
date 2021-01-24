@@ -13,25 +13,20 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function() {
     if (Auth::check()) {
-       return view('routines.index');
+       return view('homepage-logged-in');
     }
     else {
-      return view('homepage');
+      return view('homepage-logged-out');
     }
   });
 
-Route::get('routine', 'HomeController@index')->middleware('auth');
+Route::resource('routines', 'RoutineController')->middleware('auth');
 
 Route::resource('exercise', 'ExerciseController')->middleware('auth');
 Route::get('/exercises/edit/{id}', 'ExerciseController@edit')->name('exercises.edit');
 Route::delete('/exercises/delete/{id}', 'ExerciseController@destroy')->name('exercises.destroy');
-
-// Route::get('/routines/create', 'RoutineController@create');
-Route::resource('routine', 'RoutineController')->middleware('auth');
-
 
 Auth::routes();
 
