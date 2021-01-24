@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 use App\Category;
+use App\Exercise;
 
 class ExerciseSeeder extends Seeder
 {
@@ -15,12 +16,14 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Exercise::class, 10)->create();
+        factory(App\Exercise::class, 30)->create();
 
-        foreach(Category::all() as $category) {
-            $exercises = \App\Exercise::inRandomOrder()->take(rand(1,3))->pluck('id');
-            $category->exercises()->attach($exercises);
+        $categories = Category::all();
+
+        foreach (Exercise::all() as $exercise) {
+            $exercise->categories()->attach(
+                $categories->random(rand(1,5))->pluck('id')
+            );
         }
-
     }
 }
