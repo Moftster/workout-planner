@@ -55,6 +55,11 @@
             <h5 class="card-header">{{$routine->routineName}}</h5>
                 <div class="card-body">
                 <p class="card-text">{{$routine->routineDescription}}</p>
+                <ul class="list-group">
+                @foreach ($routine->exercises as $exercise)
+                  <li class="list-group-item">{{$exercise->exerciseName}}@if( !$loop->last), @endif</li>
+                @endforeach
+                </ul>
                 <a href="#" class="btn btn-success">Select as current routine</a>
                 <br>
                 <br>
@@ -69,120 +74,5 @@
 
         @endforeach
     </div>
-
-        <h3>My Routines</h3>
-        <div class="d-flex justify-content-center">
-            <a href="{{route('routines.create')}}"><button class="btn btn-primary">Create a New Workout Routine!</button></a>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card text-center">
-                <h5 class="card-header">Full Body 1</h5>
-                    <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-success">Select as current routine</a>
-                    <br>
-                    <br>
-                    <a href="#" class="btn-sm btn-warning">Edit</a>
-                    <a href="#" class="btn-sm btn-danger">Delete</a> 
-                    </div>
-                    <div class="card-footer text-muted">
-                    Last completed 2 days ago
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card text-center">
-                    <h5 class="card-header">Full Body 1</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-success">Select as current routine</a>
-                        <br>
-                        <br>
-                        <a href="#" class="btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn-sm btn-danger">Delete</a> 
-                    </div>
-                    <div class="card-footer text-muted">
-                    Last completed 2 days ago
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card text-center">
-                  <h5 class="card-header">Full Body 1</h5>
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-success">Select as current routine</a>
-                      <br>
-                      <br>
-                      <a href="#" class="btn-sm btn-warning">Edit</a>
-                      <a href="#" class="btn-sm btn-danger">Delete</a> 
-                    </div>
-                    <div class="card-footer text-muted">
-                    Last completed 2 days ago
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card text-center">
-                <h5 class="card-header">Full Body 1</h5>
-                    <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-success">Select as current routine</a>
-                    <br>
-                    <br>
-                    <a href="#" class="btn-sm btn-warning">Edit</a>
-                    <a href="#" class="btn-sm btn-danger">Delete</a> 
-                    </div>
-                    <div class="card-footer text-muted">
-                    Last completed 2 days ago
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4">
-                <div class="card text-center">
-                    <h5 class="card-header">Full Body 1</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-success">Select as current routine</a>
-                        <br>
-                        <br>
-                        <a href="#" class="btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn-sm btn-danger">Delete</a> 
-                    </div>
-                    <div class="card-footer text-muted">
-                    Last completed 2 days ago
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card text-center">
-                  <h5 class="card-header">Full Body 1</h5>
-                    <div class="card-body">
-                      <h5 class="card-title">Special title treatment</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-success">Select as current routine</a>
-                      <br>
-                      <br>
-                      <a href="#" class="btn-sm btn-warning">Edit</a>
-                      <a href="#" class="btn-sm btn-danger">Delete</a> 
-                    </div>
-                    <div class="card-footer text-muted">
-                    Last completed 2 days ago
-                    </div>
-                </div>
-            </div>
-        </div>
 </div>
 @endsection
