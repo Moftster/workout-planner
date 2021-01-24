@@ -11,7 +11,7 @@
       </div>
       <br />
     @endif
-    <form method="post" action="{{ route('routine.store') }}">
+    <form method="post" action="{{ route('routines.store') }}">
         @csrf
         <div class="form-group">
           <label for="routine-name">Routine name</label>

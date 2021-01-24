@@ -41,14 +41,38 @@
           </tr>
         </tbody>
       </table>
-      
 
       <br>
       <br>
+
+      <h2>My Routines</h2>
+
+      <div class="row">
+
+        @foreach($routines as $routine)
+          <div class="col-sm-4">
+            <div class="card text-center">
+            <h5 class="card-header">{{$routine->routineName}}</h5>
+                <div class="card-body">
+                <p class="card-text">{{$routine->routineDescription}}</p>
+                <a href="#" class="btn btn-success">Select as current routine</a>
+                <br>
+                <br>
+                <a href="#" class="btn-sm btn-warning">Edit</a>
+                <a href="#" class="btn-sm btn-danger">Delete</a> 
+                </div>
+                <div class="card-footer text-muted">
+                Last completed 2 days ago
+                </div>
+            </div>
+          </div>
+
+        @endforeach
+    </div>
 
         <h3>My Routines</h3>
         <div class="d-flex justify-content-center">
-            <a href="{{route('routine.create')}}"><button class="btn btn-primary">Create a New Workout Routine!</button></a>
+            <a href="{{route('routines.create')}}"><button class="btn btn-primary">Create a New Workout Routine!</button></a>
         </div>
         <br>
         <div class="row">

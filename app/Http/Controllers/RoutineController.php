@@ -17,7 +17,9 @@ class RoutineController extends Controller
      */
     public function index()
     {
-        //
+        $routines = Routine::all();
+        return view('routines.index', compact('routines'));
+
     }
 
     /**
