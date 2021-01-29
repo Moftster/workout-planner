@@ -44,7 +44,7 @@
             <button class="btn btn-primary dropdown-toggle" type="button" id="exercisesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Add an exercise!
             </button>
-            <div class="dropdown-menu" aria-labelledby="exercisesDropdown">
+            <div name="routineExercises" class="dropdown-menu" aria-labelledby="exercisesDropdown">
                 @foreach ($exercises as $exercise)
                  <a class="dropdown-item" onclick="exerciseAdded('{{$exercise->exerciseName}}', '@foreach( $exercise->categories as $category){{$category->category}}@if( !$loop->last), @endif @endforeach')">{{$exercise->exerciseName}}</a>
                 @endforeach

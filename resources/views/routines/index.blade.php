@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-center">
-        <button class="btn-lg btn-primary">Start Workout!</button>
+        <a href="{{route('routines.create')}}"><button class="btn-lg btn-primary">Create a New Routine!</button></a>
     </div>
 
     <br>
@@ -63,7 +63,7 @@
                 <a href="#" class="btn btn-success">Select as current routine</a>
                 <br>
                 <br>
-                <a href="#" class="btn-sm btn-warning">Edit</a>
+                <a href="{{route('routines.edit', [$routine->id])}}" class="btn-sm btn-warning">Edit</a>
                 <a href="#" class="btn-sm btn-danger">Delete</a> 
                 </div>
                 <div class="card-footer text-muted">

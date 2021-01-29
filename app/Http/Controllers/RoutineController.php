@@ -49,6 +49,9 @@ class RoutineController extends Controller
         ]);
 
         $routine->save();
+
+        $routine->exercises()->sync($request->get('routineCategory'));
+
         
         return redirect('exercise/')->with('success', 'Routine saved!');
     }
@@ -72,7 +75,9 @@ class RoutineController extends Controller
      */
     public function edit($id)
     {
-        //
+        $routine = Routine::find($id);
+
+        return view('routines.update', compact('routine'));
     }
 
     /**
