@@ -2,14 +2,25 @@ Workout Planner is a simple customisable application allowing you to plan, organ
 
 To setup, please perform the following steps. 
 
-Go to Homestead directory.
+Clone the repository with git clone
 
-Run:
+Copy .env.example file to .env and edit database credentials there
 
+<!-- If Homestead -->
 vagrant up
 
 ssh into vagrant.
 
-Run:
+<!-- /If Homestead -->
 
 php artisan migrate --seed
+
+Run composer install
+
+Run php artisan key:generate
+
+Run php artisan migrate --seed 
+
+Launch the main URL.
+
+
