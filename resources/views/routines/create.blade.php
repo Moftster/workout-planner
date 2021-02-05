@@ -27,7 +27,7 @@
         <h3>Exercises</h3>
         
         <div class="form-group">
-          <table class="table">
+          <table class="table" id="tbl">
             <thead class="thead-dark">
               <th></th>
               <th>Exercise</th>
@@ -117,20 +117,13 @@
   <script> 
   
     $(document).ready(function(){
-      console.log('jquery loaded');
 
       $('#addExercise').click(function () {
-        console.log('add an item');
+        $("#tbl").append('<tr><td>{{$exerciseNumber += 1}}</td><td><select class="form-control" id="exerciseSelect">@foreach ($exercises as $exercise)<option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>@endforeach</select></td><td>@foreach( $exercise->categories as $category){{$category->category}}@if( !$loop->last), @endif @endforeach </td><td><button type="button" class="btn btn-danger btn-sm" id="remove">Remove</button></td></tr>');
       });
 
       $('body').on('click', '#remove', function () {
-        console.log('removeinng element??');
-        // $(this).parent('tr').remove();
-        // $(this).parent("tr:first").remove();
-        // $(this).remove();
         $(this).closest('tr').remove(); 
-
-
       });
 
     });
