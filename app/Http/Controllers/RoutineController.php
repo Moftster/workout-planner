@@ -52,10 +52,9 @@ class RoutineController extends Controller
 
         $routine->save();
 
-        $routine->exercises()->sync($request->get('routineCategory'));
+        $routine->exercises()->sync($request->get('routineExercises'));
 
-        
-        return redirect('exercise/')->with('success', 'Routine saved!');
+        return redirect('routines/')->with('success', 'Routine saved!');
     }
 
     /**

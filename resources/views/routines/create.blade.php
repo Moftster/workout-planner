@@ -39,10 +39,9 @@
                 <tr>
                   <td>{{$exerciseNumber += 1}}</td>
                   <td>
-                    <select class="form-control" id="exerciseSelect">
+                    <select name="routineExercises[]" class="form-control" id="exerciseSelect">
                         @foreach ($exercises as $exercise)
-                        
-                          <option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
+                          <option value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
                         @endforeach
                     </select>
                   </td>
@@ -58,10 +57,10 @@
                 <tr>
                   <td>{{$exerciseNumber += 1}}</td>
                   <td>
-                    <select class="form-control" id="exerciseSelect">
+                    <select name="routineExercises[]" class="form-control" id="exerciseSelect">
                         @foreach ($exercises as $exercise)
                         
-                          <option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
+                          <option value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
                         @endforeach
                     </select>
                   </td>
@@ -77,10 +76,9 @@
                 <tr>
                   <td>{{$exerciseNumber += 1}}</td>
                   <td>
-                    <select class="form-control" id="exerciseSelect">
+                    <select name="routineExercises[]" class="form-control" id="exerciseSelect">
                         @foreach ($exercises as $exercise)
-                        
-                          <option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
+                          <option value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
                         @endforeach
                     </select>
                   </td>

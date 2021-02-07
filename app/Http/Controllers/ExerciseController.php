@@ -52,7 +52,6 @@ class ExerciseController extends Controller
 
             $exercise = new Exercise([
                 'exerciseName' => $request->get('exerciseName'),
-                // 'exerciseCategory' => $exerciseCategoryToString
             ]);
             $exercise->save();
 
