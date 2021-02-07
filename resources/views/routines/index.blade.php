@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <p class="text-center">{!! \Session::get('success') !!}</p>
+    </div>
+@endif
+
 <div class="container">
     <div class="d-flex justify-content-center">
         <a href="{{route('routines.create')}}"><button class="btn-lg btn-primary">Create a New Routine!</button></a>
