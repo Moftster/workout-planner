@@ -31,7 +31,6 @@
             <thead class="thead-dark">
               <th></th>
               <th>Exercise</th>
-              <th>Targeting</th>
               <th></th>
             </thead>
             <tbody>
@@ -40,55 +39,42 @@
                   <td>{{$exerciseNumber += 1}}</td>
                   <td>
                     <select name="routineExercises[]" class="form-control" id="exerciseSelect">
+                        <option selected value="">--- Select an Exercise ---</option>
                         @foreach ($exercises as $exercise)
                           <option value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
                         @endforeach
                     </select>
                   </td>
                   <td>
-                    @foreach( $exercise->categories as $category)
-                      {{$category->category}}@if( !$loop->last), @endif 
-                    @endforeach
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger btn-sm" id="remove">Remove</button>
+                    <button type="button" class="btn btn-danger btn-sm float-right" id="remove">Remove</button>
                   </td>
                 </tr>
                 <tr>
                   <td>{{$exerciseNumber += 1}}</td>
                   <td>
                     <select name="routineExercises[]" class="form-control" id="exerciseSelect">
+                        <option selected value="">--- Select an Exercise ---</option>
                         @foreach ($exercises as $exercise)
-                        
                           <option value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
                         @endforeach
                     </select>
                   </td>
                   <td>
-                    @foreach( $exercise->categories as $category)
-                      {{$category->category}}@if( !$loop->last), @endif 
-                    @endforeach
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger btn-sm" id="remove">Remove</button>
+                    <button type="button" class="btn btn-danger btn-sm float-right" id="remove">Remove</button>
                   </td>
                 </tr>
                 <tr>
                   <td>{{$exerciseNumber += 1}}</td>
                   <td>
                     <select name="routineExercises[]" class="form-control" id="exerciseSelect">
+                        <option selected value="">--- Select an Exercise ---</option>
                         @foreach ($exercises as $exercise)
                           <option value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>
                         @endforeach
                     </select>
                   </td>
                   <td>
-                    @foreach( $exercise->categories as $category)
-                      {{$category->category}}@if( !$loop->last), @endif 
-                    @endforeach
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger btn-sm" id="remove">Remove</button>
+                    <button type="button" class="btn btn-danger btn-sm float-right" id="remove">Remove</button>
                   </td>
                 </tr>
 
@@ -103,7 +89,7 @@
         <br>
 
         <div class="d-flex justify-content-center">
-            <button class="btn-lg btn-success" type="submit">Create routine!</button>
+            <button id="createRoutine" class="btn-lg btn-success" type="submit">Create routine!</button>
         </div>
       </form>
 </div>
@@ -117,13 +103,30 @@
     $(document).ready(function(){
 
       $('#addExercise').click(function () {
-        $("#tbl").append('<tr><td>{{$exerciseNumber += 1}}</td><td><select class="form-control" id="exerciseSelect">@foreach ($exercises as $exercise)<option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>@endforeach</select></td><td>@foreach( $exercise->categories as $category){{$category->category}}@if( !$loop->last), @endif @endforeach </td><td><button type="button" class="btn btn-danger btn-sm" id="remove">Remove</button></td></tr>');
+        $("#tbl").append('<tr><td>{{$exerciseNumber += 1}}</td><td><select class="form-control" id="exerciseSelect"><option selected>--- Select an Exercise ---</option>@foreach ($exercises as $exercise)<option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>@endforeach</select></td><td><button type="button" class="btn btn-danger btn-sm float-right" id="remove">Remove</button></td></tr>');
       });
 
       $('body').on('click', '#remove', function () {
         $(this).closest('tr').remove(); 
       });
+  
+      $('#createRoutine').click(function() {
+        
+        $('select').each(function() {
+            
+          var value = $(this).find(":selected").text();
+          console.log(value);
+          
+          if(value == '--- Select an Exercise ---') {
+            
+            event.preventDefault();
+            alert('Please remove any empty entries below');
+            return false;
 
+            };
+          });
+
+        });
     });
 
   </script>
