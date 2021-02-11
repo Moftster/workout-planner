@@ -30,9 +30,7 @@ class RoutineController extends Controller
     public function create()
     {
         $exercises = Exercise::all();
-        $totalSelectors = 4;
-        $exerciseNumber = 0;
-        return view('routines.create', compact('exercises', 'totalSelectors', 'exerciseNumber'));
+        return view('routines.create', compact('exercises'));
     }
 
     /**

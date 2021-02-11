@@ -29,14 +29,14 @@
         <div class="form-group">
           <table class="table" id="tbl">
             <thead class="thead-dark">
-              <th></th>
+              <th>№</th>
               <th>Exercise</th>
               <th></th>
             </thead>
             <tbody>
 
                 <tr>
-                  <td>{{$exerciseNumber += 1}}</td>
+                  <td class="number"></td>
                   <td>
                     <select name="routineExercises[]" class="form-control" id="exerciseSelect">
                         <option selected value="">--- Select an Exercise ---</option>
@@ -50,7 +50,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>{{$exerciseNumber += 1}}</td>
+                  <td class="number"></td>
                   <td>
                     <select name="routineExercises[]" class="form-control" id="exerciseSelect">
                         <option selected value="">--- Select an Exercise ---</option>
@@ -64,7 +64,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>{{$exerciseNumber += 1}}</td>
+                  <td class="number"></td>
                   <td>
                     <select name="routineExercises[]" class="form-control" id="exerciseSelect">
                         <option selected value="">--- Select an Exercise ---</option>
@@ -102,31 +102,44 @@
   
     $(document).ready(function(){
 
+      function calculateRowNumber() {
+        $('#tbl .number').each(function(base) {
+            base ++;
+            $(this).text(base);
+        })
+        };
+      
       $('#addExercise').click(function () {
-        $("#tbl").append('<tr><td>{{$exerciseNumber += 1}}</td><td><select class="form-control" id="exerciseSelect"><option selected>--- Select an Exercise ---</option>@foreach ($exercises as $exercise)<option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>@endforeach</select></td><td><button type="button" class="btn btn-danger btn-sm float-right" id="remove">Remove</button></td></tr>');
+        $("#tbl").append('<tr><td class="number"></td><td><select class="form-control" id="exerciseSelect"><option selected>--- Select an Exercise ---</option>@foreach ($exercises as $exercise)<option name="routineExercises[]" value="{{$exercise->id}}">{{$exercise->exerciseName}}</option>@endforeach</select></td><td><button type="button" class="btn btn-danger btn-sm float-right" id="remove">Remove</button></td></tr>');
+        calculateRowNumber();
       });
 
       $('body').on('click', '#remove', function () {
         $(this).closest('tr').remove(); 
+        calculateRowNumber();
       });
   
       $('#createRoutine').click(function() {
-        
+
         $('select').each(function() {
             
           var value = $(this).find(":selected").text();
-          console.log(value);
           
           if(value == '--- Select an Exercise ---') {
-            
             event.preventDefault();
             alert('Please remove any empty entries below');
             return false;
-
             };
           });
-
+          function calculateRowNumber() {
+            $('#tbl .number').each(function(base) {
+            base ++;
+            $(this).text(base);
+            })
+          };
         });
+
+        calculateRowNumber();
     });
 
   </script>
