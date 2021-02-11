@@ -121,13 +121,22 @@
   
       $('#createRoutine').click(function() {
 
+        var numberOfExercises = 0;
+
         $('select').each(function() {
+
+          numberOfExercises++;
             
           var value = $(this).find(":selected").text();
           
-          if(value == '--- Select an Exercise ---') {
+          // if(value.isEmptyObject({})){
+          //   event.preventDefault();
+          //   alert('At least one exercise must be included in a routine.');
+          //   return false;
+          // }
+          if (value == '--- Select an Exercise ---') {
             event.preventDefault();
-            alert('Please remove any empty entries below');
+            alert('Please remove any unselected exercise entries below');
             return false;
             };
           });
@@ -137,6 +146,12 @@
             $(this).text(base);
             })
           };
+
+          if(numberOfExercises === 0) {
+            event.preventDefault();
+            alert('At least one exercise must be included in the routine');
+            return false;
+          }
         });
 
         calculateRowNumber();
