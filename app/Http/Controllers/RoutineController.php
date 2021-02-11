@@ -17,7 +17,7 @@ class RoutineController extends Controller
      */
     public function index()
     {
-        $routines = Routine::all();
+        $routines = Routine::all()->sortByDesc('updated_at');
         return view('routines.index', compact('routines'));
 
     }

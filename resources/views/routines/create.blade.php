@@ -82,8 +82,8 @@
             </table>
           </div>
             
-        <div class="">
-          <button type="button" class="btn btn-primary" id="addExercise">Add exercise</button>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-primary" id="addExercise">Add another exercise</button>
         </div>
 
         <br>
