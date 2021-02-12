@@ -28,15 +28,21 @@
       <table class="table">
           <thead>
               <tr>
+                  <th>№</th>
                   <th>Exercise name</th>
-                  <th>Bodypart</th>
+                  <th>Muscles targeted</th>
                   <th></th>
               </tr>
           </thead>
           @foreach ($routine->exercises as $exercise)
             <tr>
+                <td>1</td>
                 <td>{{$exercise->exerciseName}}</td>
-                <td></td>  
+                <td>
+                  @foreach ($exercise->categories as $category)
+                    {{$category->category}}@if( !$loop->last), @endif
+                  @endforeach  
+                </td>  
                 <td>
                     {{-- <form action="{{ route('routines.destroy', ['id' => $routine->id])}}" method="post">
                         @csrf

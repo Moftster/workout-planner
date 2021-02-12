@@ -105,7 +105,7 @@ class ExerciseController extends Controller
         // $exercise->exerciseCategory = implode(", ", $request->exerciseCategory);
         $exercise->save();
 
-        return redirect('/exercise')->with('success', 'Exercise updated!');
+        return redirect('exercise')->with('success', 'Exercise updated!');
     }
 
     /**

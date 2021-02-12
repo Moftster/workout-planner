@@ -52,7 +52,7 @@ class RoutineController extends Controller
 
         $routine->exercises()->sync($request->get('routineExercises'));
 
-        return redirect('routines/')->with('success', 'Routine saved!');
+        return redirect('routines')->with('success', 'Routine saved!');
     }
 
     /**
@@ -88,7 +88,17 @@ class RoutineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'routineName' => 'required'
+        ]);
+
+        $routine = Routine::find($id);
+        $routine->routineName = $request->get('routineName');
+        $routine->routineDescription = $request->get('routineDescription');
+        $routine->save();
+
+        return redirect('routines')->with('success', 'Routine updated!');
+
     }
 
     /**
