@@ -28,5 +28,11 @@ Route::resource('exercise', 'ExerciseController')->middleware('auth');
 Route::get('/exercises/edit/{id}', 'ExerciseController@edit')->name('exercises.edit');
 Route::delete('/exercises/delete/{id}', 'ExerciseController@destroy')->name('exercises.destroy');
 
+Route::get('/routines/addoneexercise', 'RoutineController@addAdditionalExercise')->name('routines.addoneexercise');
+Route::delete('/routines/delete/{id}', 'RoutineController@destroy')->name('routines.destroy');
+// Route::resource('routines.addoneexercise', 'RoutineController@addAdditionalExercise');
+
+
+
 Auth::routes();
 

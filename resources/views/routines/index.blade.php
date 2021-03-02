@@ -71,7 +71,14 @@
                 <br>
                 <br>
                 <a href="{{route('routines.edit', [$routine->id])}}" class="btn-sm btn-warning">Edit</a>
-                <a href="#" class="btn-sm btn-danger">Delete</a> 
+
+                <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+
+
                 </div>
                 <div class="card-footer text-muted">
                 Last completed 2 days ago

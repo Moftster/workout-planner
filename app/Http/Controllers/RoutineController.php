@@ -102,6 +102,23 @@ class RoutineController extends Controller
     }
 
     /**
+     * Add exercise to existing routine
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addAdditionalExercise()
+    {
+        $exercises = Exercise::all();
+        dd($exercises);
+        // return view('routines.additionalexercise'), compact('exercises');
+        // $exercises = Exercise::all();
+        return view('routines.additionalexercise', compact('exercises'));
+
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -109,6 +126,9 @@ class RoutineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $routine = Routine::find($id);
+        $routine->delete();
+
+        return redirect('routines')->with('success', 'Routine deleted!');
     }
 }
