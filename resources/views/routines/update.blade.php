@@ -35,43 +35,63 @@
               </tr>
           </thead>
           @foreach ($routine->exercises as $exercise)
-            <tr>
-                <td>1</td>
+          <tbody class="sortable">
+            <tr data-id="{{ $exercise->id }}" class="exercise">
+              <td>1</td>
                 <td>{{$exercise->exerciseName}}</td>
                 <td>
                   @foreach ($exercise->categories as $category)
-                    {{$category->category}}@if( !$loop->last), @endif
+                  {{$category->category}}@if( !$loop->last), @endif
                   @endforeach  
                 </td>  
                 <td>
-                    {{-- <form action="{{ route('routines.destroy', ['id' => $routine->id])}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Delete</button>
-                    </form> --}}
-                    <button class="btn-sm btn-danger float-right" type="submit">Remove</button>
-
+                    <p>Amend exercise</p>
                 </td>
-            </tr>    
+                </tr>    
+            </tbody>
           @endforeach
-      </table>
-  </div>
-  <ul>
-  </ul>
-
-  {{-- <div class="form-group"> --}}
-    {{-- <label for="exerciseCategory">Bodypart</label> --}}
-    {{-- @foreach ($exerciseCategories as $exerciseCategory)
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="{{$exerciseCategory->category}}" name="exerciseCategory[]" id="{{$exerciseCategory->category}}" @if (in_array($exerciseCategory->category, $selectedExercises)) checked @endif >
-        <label class="form-check-label" for="{{$exerciseCategory->category}}">
-          {{$exerciseCategory->category}}
-        </label>
+        </table>
       </div>
-      @endforeach --}}
-    {{-- </select> --}}
+      <ul>
+      </ul>
+
+      <a href="{{ route('routines.create') }}">
+        <button type="button" class="btn btn-success" href="">Add an exercise</button>
+      </a>
+
+      <br>
+      <br>
+     
+      <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to permanently delete this routine?')">Delete this routine</button>
+      </form>
+
+      <br>
+      <br>
+
       <button type="submit" class="btn btn-primary">Update routine</button>
-  </form>
+
+    </form>
 
 {{-- </div> --}}
+@endsection
+
+@section('scripts')
+
+  <script> 
+  
+    $(document).ready(function(){
+
+      console.log('jquery hooked up');
+
+      // var $exercises = $('.sortable');
+
+      $('.sortable').sortable();
+
+    });
+
+  </script>
+    
 @endsection

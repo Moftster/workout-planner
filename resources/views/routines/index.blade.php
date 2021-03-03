@@ -61,24 +61,22 @@
             <div class="card text-center">
             <h5 class="card-header">{{$routine->routineName}}</h5>
                 <div class="card-body">
-                <p class="card-text">{{$routine->routineDescription}}</p>
-                <ul class="list-group">
-                @foreach ($routine->exercises as $exercise)
-                  <li class="list-group-item">{{$exercise->exerciseName}}@if( !$loop->last), @endif</li>
-                @endforeach
-                </ul>
-                <a href="#" class="btn btn-success">Select as current routine</a>
-                <br>
-                <br>
-                <a href="{{route('routines.edit', [$routine->id])}}" class="btn-sm btn-warning">Edit</a>
+                  <p class="card-text">{{$routine->routineDescription}}</p>
+                  <ul class="list-group">
+                  @foreach ($routine->exercises as $exercise)
+                    <li class="list-group-item">{{$exercise->exerciseName}}@if( !$loop->last), @endif</li>
+                  @endforeach
+                  </ul>
+                  <a href="#" class="btn btn-success">Select as current routine</a>
+                  <br>
+                  <br>
+                  <a href="{{route('routines.edit', [$routine->id])}}" class="btn-sm btn-warning">Edit</a>
 
-                <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
-                  @csrf
-                  @method('DELETE')
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-
-
+                  <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button onclick="return confirm('Are you sure you want to permanently delete this routine?')" class="btn btn-danger" type="submit">Delete</button>
+                  </form>
                 </div>
                 <div class="card-footer text-muted">
                 Last completed 2 days ago
