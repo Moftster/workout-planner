@@ -45,7 +45,7 @@
                   @endforeach  
                 </td>  
                 <td>
-                    <p>Amend exercise</p>
+                    <p>Amend</p>
                 </td>
                 </tr>    
             </tbody>
@@ -55,13 +55,10 @@
       <ul>
       </ul>
 
-      <a href="{{ route('routines.create') }}">
+      <a href="{{ route('showexercisetoroutine', $routine->id) }}">
         <button type="button" class="btn btn-success" href="">Add an exercise</button>
       </a>
 
-      <br>
-      <br>
-     
       <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
         @csrf
         @method('DELETE')

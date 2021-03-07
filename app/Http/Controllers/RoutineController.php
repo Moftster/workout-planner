@@ -102,20 +102,32 @@ class RoutineController extends Controller
     }
 
     /**
-     * Add exercise to existing routine
+     * Display exercises to add to routine
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function addAdditionalExercise()
+    public function showAdditionalExercise($id)
     {
         $exercises = Exercise::all();
-        dd($exercises);
-        // return view('routines.additionalexercise'), compact('exercises');
-        // $exercises = Exercise::all();
-        return view('routines.additionalexercise', compact('exercises'));
+        return view('routines.additionalexercise', compact('exercises', 'id'));
+    }
 
+    /**
+     * Add exercise to existing routine
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addAdditionalExercise(Request $request)
+    {
+
+        $routine = Routine::find($request->get('routineId'));
+
+        $routine->exercises()->attach($request->get('routineExercise'));
+
+        return redirect('routines')->with('success', 'Routine updated!');
+    
     }
 
     /**

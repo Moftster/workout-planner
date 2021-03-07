@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Exercise;
+use App\Category;
+use App\Routine;
+
+use App\Http\Controllers\RoutineController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +34,11 @@ Route::resource('exercise', 'ExerciseController')->middleware('auth');
 Route::get('/exercises/edit/{id}', 'ExerciseController@edit')->name('exercises.edit');
 Route::delete('/exercises/delete/{id}', 'ExerciseController@destroy')->name('exercises.destroy');
 
-Route::get('/routines/addoneexercise', 'RoutineController@addAdditionalExercise')->name('routines.addoneexercise');
+Route::get('/addtoroutine/{id}', [RoutineController::class, 'showAdditionalExercise'])->name('showexercisetoroutine');
+
+Route::patch('/saveadditionalexercise', [RoutineController::class, 'addAdditionalExercise'])->name('additionalexercise.store');
+
 Route::delete('/routines/delete/{id}', 'RoutineController@destroy')->name('routines.destroy');
-// Route::resource('routines.addoneexercise', 'RoutineController@addAdditionalExercise');
-
-
 
 Auth::routes();
 
