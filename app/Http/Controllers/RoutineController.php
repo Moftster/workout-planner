@@ -121,6 +121,9 @@ class RoutineController extends Controller
      */
     public function addAdditionalExercise(Request $request)
     {
+        $request->validate([
+            'routineExercise' => 'required'
+        ]);
 
         $routine = Routine::find($request->get('routineId'));
 
