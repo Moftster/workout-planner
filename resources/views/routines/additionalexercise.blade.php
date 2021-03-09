@@ -26,7 +26,7 @@
                 <tr>
                   <td class="number">
                     <select name="routineExercisePosition" class="form-control" id="exercisePosition">
-                      <option selected value="">--- Select Order ---</option>
+                      <option selected value="">--- Select Position ---</option>
                       <option selected value="2">1</option>
                       <option selected value="1">2</option>
                       <option selected value="3">3</option>

@@ -12,6 +12,8 @@ class Routine extends Model
     protected $fillable = ['routineName', 'routineDescription', 'routineCategory'];
 
     public function exercises(){
-        return $this->belongsToMany(Exercise::class)->withTimestamps();
+        return $this->belongsToMany(Exercise::class)
+            ->withTimestamps()
+            ->withPivot('exercise_routine_order');
     }
 }

@@ -27,27 +27,23 @@
   <div class="card">
       <table class="table">
           <thead>
-              <tr>
-                  <th>№</th>
-                  <th>Exercise name</th>
-                  <th>Muscles targeted</th>
-                  <th></th>
-              </tr>
+            <tr>
+              <th>№</th>
+              <th>Exercise name</th>
+              <th>Muscles targeted</th>
+            </tr>
           </thead>
           @foreach ($routine->exercises as $exercise)
-          <tbody class="sortable">
-            <tr data-id="{{ $exercise->id }}" class="exercise">
-              <td>1</td>
-                <td>{{$exercise->exerciseName}}</td>
-                <td>
-                  @foreach ($exercise->categories as $category)
-                  {{$category->category}}@if( !$loop->last), @endif
-                  @endforeach  
-                </td>  
-                <td>
-                    <p>Amend</p>
-                </td>
-                </tr>    
+            <tbody class="sortable">
+              <tr data-id="{{ $exercise->id }}" class="exercise">
+                  <td>{{$exercise->pivot->exercise_routine_order}}</td>
+                  <td>{{$exercise->exerciseName}}</td>
+                  <td>
+                    @foreach ($exercise->categories as $category)
+                      {{$category->category}}@if( !$loop->last), @endif
+                    @endforeach  
+                  </td>  
+              </tr>    
             </tbody>
           @endforeach
         </table>

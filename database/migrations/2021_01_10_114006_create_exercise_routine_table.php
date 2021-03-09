@@ -15,6 +15,7 @@ class CreateExerciseRoutineTable extends Migration
     {
         Schema::create('exercise_routine', function (Blueprint $table) {
             $table->id();
+            $table->integer('exercise_routine_order');
             $table->unsignedBigInteger('exercise_id');
             $table->unsignedBigInteger('routine_id');
             $table->timestamps();

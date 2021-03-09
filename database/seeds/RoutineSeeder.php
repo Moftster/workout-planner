@@ -20,10 +20,14 @@ class RoutineSeeder extends Seeder
 
         $exercises = Exercise::all();
 
+        $order = 0;
+
         foreach(Routine::all() as $routine) {
             $routine->exercises()->attach(
-                $exercises->random(rand(3,14))->pluck('id')
+                $exercises->random(rand(3,14))->pluck('id'), 
+                ['exercise_routine_order' => $order + 1]
             );
+            $order +=1;
         }
     }
 }
