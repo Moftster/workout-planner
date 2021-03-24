@@ -16,14 +16,38 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Exercise::class, 30)->create();
+
+        $exercises = [
+                'Banded Fly',
+                'Press Up',
+                'Sit Up',
+                'Superman Raise',
+                'Banded Deadlift',
+                'Bodyweight Squat',
+                'Concentric Wall Squat',
+                'Lateral Side Raise',
+                'Shoulder Press',
+                'Chair Squat',
+        ];
+
+        foreach($exercises as $exercise) {
+            Exercise::create([
+                'exerciseName' => $exercise
+            ]);
+        }
 
         $categories = Category::all();
 
-        foreach (Exercise::all() as $exercise) {
-            $exercise->categories()->attach(
-                $categories->random(rand(1,5))->pluck('id')
-            );
-        }
+        Exercise::find(1)->categories()->attach([2, 8]);
+        Exercise::find(2)->categories()->attach([1, 8]);
+        Exercise::find(3)->categories()->attach([1, 8]);
+        Exercise::find(4)->categories()->attach([11]);
+        Exercise::find(5)->categories()->attach([1, 8]);
+        Exercise::find(6)->categories()->attach([1, 8]);
+        Exercise::find(7)->categories()->attach([1, 8]);
+        Exercise::find(8)->categories()->attach([1, 8]);
+        Exercise::find(9)->categories()->attach([1, 8]);
+        Exercise::find(10)->categories()->attach([1, 8]);
+
     }
 }

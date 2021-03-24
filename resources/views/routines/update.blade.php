@@ -36,7 +36,8 @@
           @foreach ($routine->exercises as $exercise)
             <tbody class="sortable">
               <tr data-id="{{ $exercise->id }}" class="exercise">
-                  <td>{{$exercise->pivot->exercise_routine_order}}</td>
+                  {{-- <td>{{$exercise->id}}</td> --}}
+                  <td>{{$exercise->pivot->id}}</td>
                   <td>{{$exercise->exerciseName}}</td>
                   <td>
                     @foreach ($exercise->categories as $category)

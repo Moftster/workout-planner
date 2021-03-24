@@ -16,4 +16,8 @@ class Routine extends Model
             ->withTimestamps()
             ->withPivot('exercise_routine_order');
     }
+
+    // public function exerciseOrder() {
+        
+    // }
 }
