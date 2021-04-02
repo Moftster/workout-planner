@@ -36,25 +36,17 @@ class RoutineSeeder extends Seeder
             ]);
         }
 
-        // Routine::find(1)->exercises()->attach([2, 8], ['exercise_routine_order' => 1]);
-        Routine::find(1)->exercises()->attach([2, 8]);
-        Routine::find(2)->exercises()->attach([1, 2, 6, 8]);
-        Routine::find(3)->exercises()->attach([1, 2, 6, 8]);
-        Routine::find(4)->exercises()->attach([1, 2, 6, 8]);
-        Routine::find(5)->exercises()->attach([1, 2, 6, 8]);
-        Routine::find(6)->exercises()->attach([1, 2, 6, 8]);
-        Routine::find(7)->exercises()->attach([1, 2, 6, 8]);
-        Routine::find(8)->exercises()->attach([1, 2, 6, 8]);
+        Routine::find(1)->exercises()->sync([2 => ['exercise_routine_order' => 1], 8 => ['exercise_routine_order' => 2]]);
 
-        // Routine::find(1)->
+        Routine::find(1)->exercises()->attach([2 => ['exercise_routine_order' => 1], 8 => ['exercise_routine_order' => 2]]);
+        Routine::find(2)->exercises()->attach([1 => ['exercise_routine_order' => 1], 2 => ['exercise_routine_order' => 2], 6 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4]]);
+        Routine::find(3)->exercises()->attach([1 => ['exercise_routine_order' => 1], 3 => ['exercise_routine_order' => 2], 4 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4]]);
+        Routine::find(4)->exercises()->attach([1 => ['exercise_routine_order' => 1], 3 => ['exercise_routine_order' => 2], 4 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4]]);
+        Routine::find(5)->exercises()->attach([1 => ['exercise_routine_order' => 1], 3 => ['exercise_routine_order' => 2], 4 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4], 4 => ['exercise_routine_order' => 5], 8 => ['exercise_routine_order' => 6]]);
+        Routine::find(6)->exercises()->attach([1 => ['exercise_routine_order' => 1], 3 => ['exercise_routine_order' => 2], 4 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4]]);
+        Routine::find(7)->exercises()->attach([1 => ['exercise_routine_order' => 1], 3 => ['exercise_routine_order' => 2], 4 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4]]);
+        Routine::find(8)->exercises()->attach([1 => ['exercise_routine_order' => 1], 3 => ['exercise_routine_order' => 2], 4 => ['exercise_routine_order' => 3], 8 => ['exercise_routine_order' => 4]]);
 
-        $order = 1;
 
-        $routines = Routine::all();
-        foreach ($routines as $routine) {
-            $routine->pivot->exercise_routine_order = $order;
-            $routine->update();
-            $order++;
-        }
     }
 }

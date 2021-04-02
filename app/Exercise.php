@@ -10,7 +10,9 @@ class Exercise extends Model
 
     public function routines()
     {
-        return $this->belongsToMany(Routine::class)->withTimestamps();
+        return $this->belongsToMany(Routine::class)
+            ->withTimestamps()
+            ->withPivot('exercise_routine_order');
     }
 
     public function categories(){
