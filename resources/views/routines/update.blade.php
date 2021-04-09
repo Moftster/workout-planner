@@ -50,22 +50,25 @@
       </div>
       <ul>
       </ul>
-
-      <a href="{{ route('showexercisetoroutine', $routine->id) }}">
-        <button type="button" class="btn btn-success" href="">Add an exercise</button>
-      </a>
-
-      <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
-        @csrf
-        @method('DELETE')
-        <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to permanently delete this routine?')">Delete this routine</button>
-      </form>
+      <div class="text-center">
+        <a href="{{ route('showexercisetoroutine', $routine->id) }}">
+          <button type="button" class="btn btn-success" href="">Add an exercise</button>
+        </a>
+      </div>  
 
       <br>
-      <br>
 
-      <button type="submit" class="btn btn-primary">Update routine</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Update routine</button>
 
+    </form>
+
+    <br>
+    <br>
+
+    <form action="{{route('routines.destroy', [$routine->id])}}" method="post">
+      @csrf
+      @method('DELETE')
+      <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure you want to permanently delete this routine?')">Delete this routine</button>
     </form>
 
 {{-- </div> --}}
