@@ -7,7 +7,7 @@
 @if ($errors->any())
 <div class="alert alert-danger">
       @foreach ($errors->all() as $error)
-        <p>{{ $error }}</p>
+        <p class="text-center">{{ $error }}</p>
       @endforeach
 </div><br />
 @endif
@@ -25,7 +25,7 @@
     <label for="exerciseCategory">Bodypart</label>
       @foreach ($exerciseCategories as $exerciseCategory)
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="{{$exerciseCategory->category}}" name="exerciseCategory[]" id="{{$exerciseCategory->category}}">
+        <input class="form-check-input" type="checkbox" value="{{$exerciseCategory->id}}" name="exerciseCategory[]" id="{{$exerciseCategory->category}}">
         <label class="form-check-label" for="{{$exerciseCategory->category}}">
           {{$exerciseCategory->category}}
         </label>

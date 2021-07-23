@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExerciseCategories extends Migration
+class CreateCategoryExerciseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateExerciseCategories extends Migration
      */
     public function up()
     {
-        Schema::create('exercise_categories', function (Blueprint $table) {
+        Schema::create('category_exercise', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('exercise_id')->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateExerciseCategories extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercise_categories');
+        Schema::dropIfExists('category_exercise');
     }
 }
